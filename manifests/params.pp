@@ -8,7 +8,7 @@ class epel::params {
   #   the most specific declaration of proxy.
   $proxy = 'absent'
 
-  if $facts['os']['name'] == 'Amazon' and $facts['os']['release']['major'] == '2'  {
+  if $facts['os']['name'] == 'Amazon' and $facts['os']['release']['major'] == '2' {
     # Amazon Linux 2 is equivalent of Enterprise Linux 7 so we use that version for epel
     # https://aws.amazon.com/premiumsupport/knowledge-center/ec2-enable-epel/
     $os_maj_release = '7'
@@ -20,9 +20,9 @@ class epel::params {
   }
 
   if versioncmp($os_maj_release, '5') > 0 {
-      $url_path = 'metalink'
+    $url_path = 'metalink'
   } else {
-      $url_path = 'mirrorlist'
+    $url_path = 'mirrorlist'
   }
 
   $epel_mirrorlist                        = "https://mirrors.fedoraproject.org/${url_path}?repo=epel-${os_maj_release}&arch=\$basearch"
